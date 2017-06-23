@@ -8,9 +8,19 @@ function appointment_shortcodes_init()
     {
         $mindate = date("Y-m-d");//"2017-08-09";
         $content .= <<<EOT
-Name: <input type="date" min="$mindate"/><br />
-Phone: <input /><br />
+        <style>
+        input{
+            float: right;
+            clear: right;
+            width:40%;
+            }
+            </style>
+            <form method="post" action="/slim/api/appointment">
+Name: <input name ="name"/><br />
+Date: <input name="date" type="date" min="$mindate"/><br />
+Phone: <input name="phone" type="tel"/><br />
 <input type="submit" />
+</form>
 
 EOT;
         return $content;
