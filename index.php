@@ -1,15 +1,20 @@
 <?php
 /*
-Plugin Name: My Name Is
+Plugin Name: Add Appointment
 */
-function name_shortcodes_init()
+function appointment_shortcodes_init()
 {
-    function name_shortcode($atts = [], $content = null)
+    function appointment_shortcode($atts = [], $content = null)
     {
-        
-        $content .= "Richard Hildred - 095718310";
+        $mindate = date("Y-m-d");//"2017-08-09";
+        $content .= <<<EOT
+Name: <input type="date" min="$mindate"/><br />
+Phone: <input /><br />
+<input type="submit" />
+
+EOT;
         return $content;
     }
-    add_shortcode('name-student-plugin', 'name_shortcode');
+    add_shortcode('appointment-plugin', 'appointment_shortcode');
 }
-add_action('init', 'name_shortcodes_init');
+add_action('init', 'appointment_shortcodes_init');
